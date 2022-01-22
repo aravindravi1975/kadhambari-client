@@ -10,6 +10,7 @@ import { costState } from "../atoms/CostAtom";
 import { BackTop } from "antd";
 import { Empty } from "antd";
 import Payment from "../components/Payment";
+import Rupee from "../components/Rupee";
 
 function checkout() {
   const cartValue = useRecoilValue(cartState);
@@ -123,11 +124,13 @@ function checkout() {
                           <p className="font-bold text-xs lg:text-lg font-body">
                             {item.name}
                           </p>
-                          <p className="font-semibold text-xs lg:text-md text-gray-500 font-body">
-                            ₹{item.price} per piece
+                          <p className="font-semibold text-xs lg:text-md text-gray-500 font-body flex">
+                            <Rupee />
+                            {item.price} per piece
                           </p>
-                          <p className="font-semibold text-gray-500 font-body">
-                            Total : ₹{item.price * item.quantity}
+                          <p className="font-semibold text-gray-500 font-body flex">
+                            Total : <Rupee />
+                            {item.price * item.quantity}
                           </p>
                           <p className="font-semibold text-gray-500 font-body">
                             Quantity : {item.quantity}
@@ -150,12 +153,18 @@ function checkout() {
 
                   <span className="flex justify-between ml-2 mr-2">
                     <p className="font-body">Cart Total</p>
-                    <p className="font-body">₹{total}</p>
+                    <p className="font-body flex">
+                      <Rupee />
+                      {total}
+                    </p>
                   </span>
                   <div className="h-[50px] lg:h-[160px] w-[2px] bg-gray-300 ml-8" />
                   <span className="flex justify-between ml-2 mr-2 mt-[20px]">
                     <p className="font-bold font-body">Amount Payable</p>
-                    <p className="font-bold text-lg font-body">₹{total}</p>
+                    <p className="font-bold text-lg font-body flex">
+                      <Rupee />
+                      {total}
+                    </p>
                   </span>
                 </div>
                 {/* <Link href="/payment"> */}

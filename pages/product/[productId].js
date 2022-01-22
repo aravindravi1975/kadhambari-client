@@ -12,6 +12,7 @@ import ProductsCard from "../../components/ProductsCard";
 import { cartItemState } from "../../atoms/CostAtom";
 import { BackTop } from "antd";
 import { Skeleton } from "antd";
+import Rupee from "../../components/Rupee";
 
 axios.defaults.withCredentials = true;
 
@@ -170,17 +171,26 @@ function product() {
                         {product.originalPrice === product.storePrice ? (
                           <span className="flex gap-2 font-body">
                             <p>MRP:</p>
-                            <p>₹{product.storePrice}</p>
+                            <p className="flex">
+                              <Rupee />
+                              {product.storePrice}
+                            </p>
                           </span>
                         ) : (
                           <>
                             <span className="flex gap-2 line-through font-body">
                               <p className="hidden lg:block">MRP:</p>
-                              <p>₹{product.originalPrice}</p>
+                              <p className="flex">
+                                <Rupee />
+                                {product.originalPrice}
+                              </p>
                             </span>
                             <span className="flex gap-2 text-lg font-body">
                               <p className="hidden lg:block">Special Price:</p>
-                              <p className="font-bold">₹{product.storePrice}</p>
+                              <p className="font-bold flex">
+                                <Rupee />
+                                {product.storePrice}
+                              </p>
                             </span>
                             <span>
                               <p className="text-orange-600 text-md lg:text-lg font-body">

@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Rupee from "./Rupee";
+
 function ProductsCard({ product, handleSelectProduct }) {
   return (
     <>
@@ -20,12 +22,15 @@ function ProductsCard({ product, handleSelectProduct }) {
             </p>
             <div className="flex gap-x-2 lg:gap-x-10 mt-5 font-light pl-2 justify-center">
               {product.originalPrice !== product.storePrice && (
-                <p className="line-through font-body">
-                  ₹{product.originalPrice}
+                <p className="line-through font-body flex">
+                  <Rupee /> {product.originalPrice}
                 </p>
               )}
 
-              <p className="font-semibold font-body">₹{product.storePrice}</p>
+              <p className="font-semibold font-body flex">
+                <Rupee />
+                {product.storePrice}
+              </p>
               {product.originalPrice !== product.storePrice && (
                 <p className="text-orange-400 font-bold font-body">
                   {product.discount}%
@@ -55,8 +60,14 @@ function ProductsCard({ product, handleSelectProduct }) {
             {product.name}
           </p>
           <div className="flex gap-x-2 lg:gap-x-10 mt-5 font-light pl-2 justify-center grayscale">
-            <p className="line-through font-body">₹{product.originalPrice}</p>
-            <p className="font-semibold font-body">₹{product.storePrice}</p>
+            <p className="line-through font-body flex">
+              <Rupee />
+              {product.originalPrice}
+            </p>
+            <p className="font-semibold font-body flex">
+              <Rupee />
+              {product.storePrice}
+            </p>
             <p className="text-orange-400 font-bold font-body">
               {product.discount}%
             </p>
