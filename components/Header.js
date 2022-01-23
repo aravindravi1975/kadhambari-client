@@ -100,7 +100,7 @@ function Header() {
               <p className="text-lg lg:text-2xl font-bold text-white h-0">
                 Kadhambari
               </p>
-              <p className="text-right pt-1 text-xs text-white">Since 1976</p>
+              <p className="text-right pt-1 text-xs text-white">Since 1975</p>
             </span>
             {/* <Image
               src={iconWhite}
