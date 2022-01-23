@@ -95,12 +95,12 @@ function Header() {
             <p className="hidden lg:block text-xs ml-[235px] text-white font-body">
               Since 1976
             </p> */}
-          <div className="ml-[5%] lg:ml-[15%] justify-end cursor-pointer">
+          <div className="ml-[1%] lg:ml-[15%] justify-end cursor-pointer">
             <span>
               <p className="text-lg lg:text-2xl font-bold text-white h-0">
                 Kadhambari
               </p>
-              <p className="text-center pt-1 text-xs text-white">Since 1976</p>
+              <p className="text-right pt-1 text-xs text-white">Since 1976</p>
             </span>
             {/* <Image
               src={iconWhite}
