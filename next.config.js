@@ -3,6 +3,7 @@ module.exports = {
     domains: [
       "kadhambari.s3.ap-south-1.amazonaws.com",
       "kadhambari.s3.amazonaws.com",
+      "kadhambariimages.s3.ap-south-1.amazonaws.com",
     ],
   },
 };
