@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import { Skeleton } from "antd";
 import Image from "next/image";
 
-const Posters = ({ poster }) => {
-  // const [poster, setPoster] = useState();
-  const [loading, setLoading] = useState(false);
+const Posters = () => {
+  const [poster, setPoster] = useState();
+  const [loading, setLoading] = useState(true);
 
   // const contentStyle = {
   //   height: "460px",
@@ -16,18 +16,18 @@ const Posters = ({ poster }) => {
   //   background: "#344CB7",
   // }
 
-  // const getPoster = () => {
-  //   fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/api/poster/getposter`)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setPoster(data.poster);
-  //       setLoading(false);
-  //     });
-  // };
+  const getPoster = () => {
+    fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/api/poster/getposter`)
+      .then((response) => response.json())
+      .then((data) => {
+        setPoster(data.poster);
+        setLoading(false);
+      });
+  };
 
-  // useEffect(() => {
-  //   getPoster();
-  // }, []);
+  useEffect(() => {
+    getPoster();
+  }, []);
 
   return (
     <>

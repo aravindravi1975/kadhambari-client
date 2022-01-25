@@ -17,7 +17,7 @@ import matters from "../public/matterrs.jpeg";
 
 const { Search } = Input;
 
-export default function Home({ poster }) {
+export default function Home() {
   const guestId = () => {
     const guestId = Math.random().toString(16).slice(2);
     // console.log(guestId);
@@ -40,7 +40,7 @@ export default function Home({ poster }) {
       </Head>
       <Header />
       <div>
-        <Posters poster={poster} />
+        <Posters />
       </div>
       <div>
         <h1 className="font-semibold font-body text-center mt-12 text-lg lg:mt-10 lg:text-2xl">
@@ -132,16 +132,16 @@ export default function Home({ poster }) {
 }
 
 //SSR for getting the posters
-export const getServerSideProps = async () => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_HOST_URL}/api/poster/getposter`
-  );
-  const data = await res.json();
-  const poster = data?.poster;
+// export const getServerSideProps = async () => {
+//   const res = await fetch(
+//     `${process.env.NEXT_PUBLIC_HOST_URL}/api/poster/getposter`
+//   );
+//   const data = await res.json();
+//   const poster = data?.poster;
 
-  return {
-    props: {
-      poster,
-    },
-  };
-};
+//   return {
+//     props: {
+//       poster,
+//     },
+//   };
+// };
