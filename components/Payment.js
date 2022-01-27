@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "antd/dist/antd.css";
 import { Form, Input, Button, Radio, Modal } from "antd";
 import Header from "./Header";
@@ -6,7 +6,7 @@ import { useRecoilValue } from "recoil";
 import { costState } from "../atoms/CostAtom";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { BackTop } from "antd";
+import { BackTop, Tooltip } from "antd";
 import { useRouter } from "next/router";
 
 const { TextArea } = Input;
@@ -15,6 +15,7 @@ function Payment({ isModalVisible, closeModal }) {
   const router = useRouter();
   const [form] = Form.useForm();
   const [isDirect, setIsDirect] = useState(false);
+  const [isMattress, setIsMattress] = useState(false);
   // const total = useRecoilValue(costState);
   var total;
   if (typeof window !== "undefined") {
@@ -118,6 +119,14 @@ function Payment({ isModalVisible, closeModal }) {
     window.localStorage.clear();
     router.push("/");
   };
+
+  useEffect(() => {
+    const checkCartItems = JSON.parse(window.localStorage.getItem("cart"));
+    const found = checkCartItems.find((item) => item.category === "matterss");
+    if (found?.category === "matterss") {
+      setIsMattress(true);
+    }
+  }, [total]);
 
   return (
     <Modal
@@ -292,9 +301,24 @@ function Payment({ isModalVisible, closeModal }) {
                     <Radio value="cod" onClick={() => setIsDirect(false)}>
                       COD
                     </Radio>
-                    <Radio value="direct" onClick={() => setIsDirect(true)}>
-                      Direct
-                    </Radio>
+                    {isMattress ? (
+                      <Tooltip
+                        placement="right"
+                        title="Remove mattress to enable direct option or contact the store!"
+                      >
+                        <Radio
+                          value="direct"
+                          disabled={true}
+                          onClick={() => setIsDirect(true)}
+                        >
+                          Direct
+                        </Radio>
+                      </Tooltip>
+                    ) : (
+                      <Radio value="direct" onClick={() => setIsDirect(true)}>
+                        Direct
+                      </Radio>
+                    )}
                   </Radio.Group>
                 </Form.Item>
               </div>

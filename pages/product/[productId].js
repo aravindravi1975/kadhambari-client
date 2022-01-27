@@ -71,6 +71,7 @@ function product() {
       temp_id: Math.random().toString(16).slice(2),
       id: product._id,
       name: product.name,
+      category: product.category,
       productId: product.productId,
       slug: product.slug,
       productPictures: product.productPictures[0].img,
