@@ -63,20 +63,22 @@ function Inners() {
           {subCategory}
         </p>
       </span>
-      <div className="flex space-x-10 mt-5 ml-5">
-        <Link href={`/inners/${subCategory}/s`}>
-          <p className="cursor-pointer">S</p>
-        </Link>
-        <Link href={`/inners/${subCategory}/m`}>
-          <p className="cursor-pointer">M</p>
-        </Link>
-        <Link href={`/inners/${subCategory}/l`}>
-          <p className="cursor-pointer">L</p>
-        </Link>
-        <Link href={`/inners/${subCategory}/xl`}>
-          <p className="cursor-pointer">XL</p>
-        </Link>
-      </div>
+      {subCategory !== "lungi" && (
+        <div className="flex space-x-10 mt-5 ml-5">
+          <Link href={`/inners/${subCategory}/s`}>
+            <p className="cursor-pointer">S</p>
+          </Link>
+          <Link href={`/inners/${subCategory}/m`}>
+            <p className="cursor-pointer">M</p>
+          </Link>
+          <Link href={`/inners/${subCategory}/l`}>
+            <p className="cursor-pointer">L</p>
+          </Link>
+          <Link href={`/inners/${subCategory}/xl`}>
+            <p className="cursor-pointer">XL</p>
+          </Link>
+        </div>
+      )}
 
       {loading ? (
         <>

@@ -119,6 +119,9 @@ export const inners = (
     <Menu.Item>
       <a href="/inners/brief">Brief</a>
     </Menu.Item>
+    <Menu.Item>
+      <a href="/inners/lungi">Lungi</a>
+    </Menu.Item>
   </Menu>
 );
 

@@ -3,6 +3,7 @@ import Image from "next/image";
 import inner from "../public/inner.jpeg";
 import trunk from "../public/trunk.jpeg";
 import brief from "../public/brief.jpeg";
+import lungi from "../public/lungi.jpg";
 
 function SubCategoryInners() {
   return (
@@ -52,6 +53,18 @@ function SubCategoryInners() {
           />
           <p className="text-[10px] lg:text-[15px] pl-2 font-bold z-50 absolute text-slate-600 font-body">
             Brief
+          </p>
+        </div>
+      </Link>
+      <Link href="/inners/lungi" replace>
+        <div className="w-[50px] h-[50px] relative cursor-pointer hover:shadow-2xl lg:w-[100px] lg:h-[100px]">
+          <Image
+            src={lungi}
+            layout="fill"
+            className="object-cover absolute rounded-md lg:w-[100px] lg:h-[100px]"
+          />
+          <p className="text-[10px] lg:text-[15px] pl-2 font-bold z-50 absolute text-slate-600 font-body">
+            Lungi
           </p>
         </div>
       </Link>
