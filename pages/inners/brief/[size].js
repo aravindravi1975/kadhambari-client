@@ -8,7 +8,6 @@ import axios from "axios";
 import ProductsCard from "../../../components/ProductsCard";
 import { BackTop } from "antd";
 import { Skeleton } from "antd";
-import LazyLoad from "react-lazyload";
 
 function Size() {
   const [products, setProducts] = useState();

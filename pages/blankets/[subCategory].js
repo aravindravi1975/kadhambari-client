@@ -8,7 +8,6 @@ import axios from "axios";
 import ProductsCard from "../../components/ProductsCard";
 import { BackTop } from "antd";
 import { Skeleton } from "antd";
-import LazyLoad from "react-lazyload";
 
 function Blankets() {
   const [products, setProducts] = useState();
@@ -70,17 +69,15 @@ function Blankets() {
           <Skeleton active />
         </>
       ) : (
-        <div className="grid gap-2 grid-cols-2 lg:grid-cols-4 lg:grid-rows-4 lg:gap-y-[360px] w-full lg:h-screen">
+        <div className="grid gap-2 grid-cols-2 lg:grid-cols-4 lg:grid-rows-4 lg:gap-y-10 w-full lg:h-[100%]">
           {products &&
             products.map((product) => {
               return (
-                <LazyLoad height={300} once>
-                  <ProductsCard
-                    key={product._id}
-                    product={product}
-                    handleSelectProduct={handleSelectProduct}
-                  />
-                </LazyLoad>
+                <ProductsCard
+                  key={product._id}
+                  product={product}
+                  handleSelectProduct={handleSelectProduct}
+                />
               );
             })}
         </div>

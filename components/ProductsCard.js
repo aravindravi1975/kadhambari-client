@@ -13,6 +13,7 @@ function ProductsCard({ product, handleSelectProduct }) {
           >
             <div className="w-[150px] h-[100px] mt-2 flex justify-center lg:w-[300px] lg:h-[200px]">
               <img
+                loading="lazy"
                 src={`${product.productPictures[0].img}`}
                 className="rounded-lg mt-2 h-[100px] lg:h-[200px] object-cover"
               />
@@ -47,6 +48,7 @@ function ProductsCard({ product, handleSelectProduct }) {
         >
           <div className="w-[150px] h-[100px] mt-2 flex justify-center lg:w-[300px] lg:h-[200px]">
             <img
+              loading="lazy"
               src={`${product.productPictures[0].img}`}
               className="rounded-lg h-[100px] lg:h-[200px] object-cover relative grayscale"
             />

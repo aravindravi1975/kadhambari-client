@@ -27,7 +27,7 @@ function filtered() {
           <Skeleton active />
         </div>
       ) : (
-        <div className="grid gap-2 grid-cols-2 lg:grid-cols-4 lg:grid-rows-4 lg:gap-y-[360px] w-full lg:h-screen">
+        <div className="grid gap-2 grid-cols-2 lg:grid-cols-4 lg:grid-rows-4 lg:gap-y-10 w-full lg:h-[100%]">
           {product.length > 0 &&
             product.map((prod) => {
               return (
