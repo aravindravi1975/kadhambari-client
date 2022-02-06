@@ -7,12 +7,21 @@ import { productState } from "../../atoms/SelectProduct";
 import axios from "axios";
 import ProductsCard from "../../components/ProductsCard";
 import { BackTop } from "antd";
-import { Skeleton } from "antd";
+import { Skeleton, Select, Form, Button } from "antd";
+import { useRouter } from "next/router";
+
+const { Option } = Select;
 
 function Matterss() {
+  const router = useRouter();
+  const [form] = Form.useForm();
   const [products, setProducts] = useState();
   const [selectProduct, setSelectproduct] = useRecoilState(productState);
   const [loading, setLoading] = useState(true);
+  const [size, setSize] = useState("");
+  const [thickness, setThickness] = useState("");
+  const [filteredMatterss, setFilteredMatterss] = useState([]);
+
   var subCategory = "";
   var category = "";
   var url = "";
@@ -41,14 +50,73 @@ function Matterss() {
       });
   };
 
+  const getSearchProductBySizeAndThickness = async (size, thickness) => {
+    await axios
+      .post(
+        `${process.env.NEXT_PUBLIC_HOST_URL}/api/getFilteredProductBySizeAndThickness`,
+        {
+          size: size,
+          subCategory: subCategory,
+          thickness: thickness,
+        }
+      )
+      .then(function (response) {
+        console.log(response.data.product);
+        setFilteredMatterss(response.data.product);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
   const handleSelectProduct = (product) => {
     setSelectproduct(product._id);
     window.localStorage.setItem("productId", product._id);
   };
 
+  const handleSizeChange = (value) => {
+    setSize(value);
+  };
+
+  const handleThicknessChange = (value) => {
+    setThickness(value);
+  };
+
+  const onFinish = async () => {
+    console.log(form.getFieldValue().size);
+    console.log(form.getFieldValue().thickness);
+    getSearchProductBySizeAndThickness(
+      form.getFieldValue().size,
+      form.getFieldValue().thickness
+    );
+  };
+
   useEffect(() => {
     getProducts();
   }, [url]);
+
+  useEffect(() => {
+    router.push(`/matterss/${subCategory}/${size} ${thickness}`);
+  }, [filteredMatterss]);
+
+  const allSizeRecorn = [
+    "78x72",
+    "78x60",
+    "78x48",
+    "78x36",
+    "78x78",
+    "75x72",
+    "75x60",
+    "75x48",
+    "75x44",
+    "75x36",
+    "72x72",
+    "72x60",
+    "72x48",
+    "72x36",
+  ];
+
+  const allSizeSleepkarft = ["78x72", "78x60", "78x48", "78x36"];
 
   return (
     <>
@@ -63,6 +131,100 @@ function Matterss() {
           {subCategory}
         </p>
       </span>
+      <div className="flex space-x-10 mt-5 ml-5">
+        <Form
+          className="flex gap-x-10"
+          form={form}
+          name="payment"
+          requiredMark={false}
+          initialValues={
+            {
+              //   remember: true,
+            }
+          }
+          layout="vertical"
+          onFinish={onFinish}
+          // onFinishFailed={onFinishFailed}
+          autoComplete="off"
+        >
+          <Form.Item
+            name="size"
+            rules={[
+              {
+                required: true,
+                message: "Please select a size!",
+              },
+            ]}
+          >
+            {subCategory === "recron" && (
+              <Select
+                placeholder="Select a size"
+                onChange={(value) => handleSizeChange(value)}
+                // allowClear
+              >
+                {allSizeRecorn.map((size) => {
+                  return <Option value={size}>{size}</Option>;
+                })}
+              </Select>
+            )}
+            {subCategory === "sleepkarft" && (
+              <Select
+                placeholder="Select a size"
+                onChange={(value) => handleSizeChange(value)}
+                // allowClear
+              >
+                {allSizeSleepkarft.map((size) => {
+                  return <Option value={size}>{size}</Option>;
+                })}
+              </Select>
+            )}
+          </Form.Item>
+          <Form.Item
+            name="thickness"
+            rules={[
+              {
+                required: true,
+                message: "Please select a thickness!",
+              },
+            ]}
+          >
+            {subCategory === "recron" && (
+              <Select
+                placeholder="Select a thickness"
+                onChange={(value) => handleThicknessChange(value)}
+                // allowClear
+              >
+                <Option value="4">4</Option>
+                <Option value="5">5</Option>
+              </Select>
+            )}
+            {subCategory === "sleepkarft" && (
+              <Select
+                placeholder="Select a thickness"
+                onChange={(value) => handleThicknessChange(value)}
+                // allowClear
+              >
+                <Option value="4">4</Option>
+                <Option value="7">7</Option>
+              </Select>
+            )}
+          </Form.Item>
+          <Button
+            type="primary"
+            htmlType="submit"
+            className="lg:mb-10"
+            style={{
+              background: "#07393C",
+              borderColor: "#07393C",
+            }}
+          >
+            Find
+          </Button>
+        </Form>
+        {/* <Link href={`/matterss/${subCategory}/s`}> */}
+
+        {/* </Link> */}
+      </div>
       {loading ? (
         <>
           <Skeleton active />

@@ -185,7 +185,7 @@ function Header() {
             className="ant-dropdown-link text-white font-body"
             onClick={(e) => e.preventDefault()}
           >
-            INNERS <DownOutlined />
+            OTHERS <DownOutlined />
           </a>
         </Dropdown>
 
