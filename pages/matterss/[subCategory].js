@@ -116,7 +116,40 @@ function Matterss() {
     "72x36",
   ];
 
-  const allSizeSleepkarft = ["78x72", "78x60", "78x48", "78x36"];
+  const allSizeSleepkarft = [
+    "72x30",
+    "72x35",
+    "72x36",
+    "72x42",
+    "72x48",
+    "72x60",
+    "72x66",
+    "72x72",
+    "75x30",
+    "75x35",
+    "75x36",
+    "75x42",
+    "75x48",
+    "75x60",
+    "75x66",
+    "75x72",
+    "78x30",
+    "78x35",
+    "78x36",
+    "78x42",
+    "78x48",
+    "78x60",
+    "78x66",
+    "78x72",
+    "84x30",
+    "84x35",
+    "84x36",
+    "84x42",
+    "84x48",
+    "84x60",
+    "84x66",
+    "84x72",
+  ];
 
   return (
     <>
@@ -135,7 +168,7 @@ function Matterss() {
         <Form
           className="flex gap-x-10"
           form={form}
-          name="payment"
+          name="filterMatterss"
           requiredMark={false}
           initialValues={
             {
@@ -149,12 +182,12 @@ function Matterss() {
         >
           <Form.Item
             name="size"
-            rules={[
-              {
-                required: true,
-                message: "Please select a size!",
-              },
-            ]}
+            // rules={[
+            //   {
+            //     required: true,
+            //     message: "Please select a size!",
+            //   },
+            // ]}
           >
             {subCategory === "recron" && (
               <Select
@@ -181,12 +214,12 @@ function Matterss() {
           </Form.Item>
           <Form.Item
             name="thickness"
-            rules={[
-              {
-                required: true,
-                message: "Please select a thickness!",
-              },
-            ]}
+            // rules={[
+            //   {
+            //     required: true,
+            //     message: "Please select a thickness!",
+            //   },
+            // ]}
           >
             {subCategory === "recron" && (
               <Select
@@ -196,6 +229,9 @@ function Matterss() {
               >
                 <Option value="4">4</Option>
                 <Option value="5">5</Option>
+                <Option value="6">6</Option>
+                <Option value="7">7</Option>
+                <Option value="8">8</Option>
               </Select>
             )}
             {subCategory === "sleepkarft" && (
@@ -205,7 +241,10 @@ function Matterss() {
                 // allowClear
               >
                 <Option value="4">4</Option>
+                <Option value="5">5</Option>
+                <Option value="6">6</Option>
                 <Option value="7">7</Option>
+                <Option value="8">8</Option>
               </Select>
             )}
           </Form.Item>
