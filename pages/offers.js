@@ -21,7 +21,7 @@ function Offers() {
 
   const getAllProducts = () => {
     axios
-      .post(
+      .get(
         `${process.env.NEXT_PUBLIC_HOST_URL}/api/getFilteredProductByDiscount`
         // {
         //   discount: 6,
