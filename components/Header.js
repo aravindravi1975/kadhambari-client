@@ -197,6 +197,15 @@ function Header() {
             GIFT COMBO <DownOutlined />
           </a>
         </Dropdown>
+
+        <Link href="/offers">
+          <a
+            className="ant-dropdown-link text-white font-body"
+            // onClick={(e) => e.preventDefault()}
+          >
+            OFFERS <DownOutlined />
+          </a>
+        </Link>
       </div>
     </>
   );
